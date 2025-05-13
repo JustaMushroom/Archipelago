@@ -50,7 +50,6 @@ class RobobeatWorld(World):
             filler_item = self.create_item(self.get_filler_item_name())
             self.multiworld.itempool.append(filler_item)
 
-        print("filler count: " + str(filler_count))
 
     def create_regions(self) -> None:
         for region_name in all_regions.keys():

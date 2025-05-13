@@ -17,9 +17,9 @@ class RobobeatRules:
         self.world = world
         self.location_rules = {}
         self.region_rules = {
-            "The Old Passage": self.has_armory_access,
-            "The Citadel": self.has_study_access,
-            "The Machine": self.has_frazzer_access,
+            "The Old Passage": self.armory_access,
+            "The Citadel": self.study_access,
+            "The Machine": self.frazzer_access,
         }
         self.location_rules = {
             "Parkour Room Blueprint": self.shop_access,
@@ -27,13 +27,13 @@ class RobobeatRules:
             "Stab Blueprint": self.has_contact
         }
 
-    def has_armory_access(self, state: CollectionState) -> bool:
+    def armory_access(self, state: CollectionState) -> bool:
         return state.has("Progressive Key", self.player, count=1)
 
-    def has_study_access(self, state: CollectionState) -> bool:
+    def study_access(self, state: CollectionState) -> bool:
         return state.has("Progressive Key", self.player, count=2)
 
-    def has_frazzer_access(self, state: CollectionState) -> bool:
+    def frazzer_access(self, state: CollectionState) -> bool:
         return state.has("Progressive Key", self.player, count=3)
 
     def shop_access(self, state: CollectionState) -> bool:

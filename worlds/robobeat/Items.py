@@ -100,4 +100,19 @@ all_items = [
     'type:':  ItemClassification.filler}
 ]
 
+starting_items = [
+    {'name': "Revolver Blueprint",
+     'type': ItemClassification.useful},
+    {'name': "Flux Blueprint",
+     'type': ItemClassification.useful},
+    {'name': "Contact Blueprint",
+     'type': ItemClassification.progression},
+    {'name': "Ping Pong Blueprint",
+     'type': ItemClassification.useful},
+    {'name': "Teleport Blueprint",
+     'type': ItemClassification.useful},
+    {'name': "Lightning Strike Blueprint",
+     'type': ItemClassification.useful}
+]
+
 filler_items = ["30 Blips", "3000 Credits"]

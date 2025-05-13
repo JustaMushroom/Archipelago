@@ -8,6 +8,7 @@ from .Locations import all_locations
 class RobobeatWorld(World):
     """Rhythm FPS - plz finish"""
     game = "ROBOBEAT"
+    origin_region_name = "The HUB"
     options_dataclass = RobobeatOptions
     options: RobobeatOptions
     settings: typing.ClassVar[RobobeatOptions]

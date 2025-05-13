@@ -1,7 +1,10 @@
 from worlds.AutoWorld import World
+from BaseClasses import ItemClassification, Item, Location, Region
 from .Options import RobobeatOptions
-from .Items import all_items, RobobeatItem, filler_items
-from .Locations import all_locations
+from .Items import main_items, blueprint_items, RobobeatItem, filler_items
+from .Locations import all_locations, location_regions
+from .Regions import all_regions
+from . import Rules
 
 
 
@@ -11,8 +14,8 @@ class RobobeatWorld(World):
     origin_region_name = "The HUB"
     options_dataclass = RobobeatOptions
     options: RobobeatOptions
-    settings: typing.ClassVar[RobobeatOptions]
-    item_name_to_id = {item["name"]: i + 1 for i, item in enumerate(all_items)}
+    all_items = main_items + blueprint_items
+    item_name_to_id = {item["name"]: i + 1 for i, item in enumerate(main_items + blueprint_items)}  
     location_name_to_id = {location: i + 1 for i, location in enumerate(all_locations)}
 
     def generate_early(self) -> None:
@@ -27,14 +30,19 @@ class RobobeatWorld(World):
 
     def create_item(self, name: str) -> Item:
         item_id = self.item_name_to_id[name]
-        item_info = all_items[item_id - 1]
+        item_info = self.all_items[item_id - 1]
         return RobobeatItem(name, item_info['type'], item_id, self.player)
 
+    def create_event(self, name: str) -> Item:
+        return RobobeatItem(name, ItemClassification.progression, None, self.player)
 
     def create_items(self) -> None:
         num_items_added = 0
-        for item in all_items:
-            for _ in range(item['count']):
+        for item in self.all_items:
+            num = 1
+            if 'count' in item:
+                num = item['count']
+            for _ in range(num):
                 i = self.create_item(item['name'])
                 self.multiworld.itempool.append(i)
                 num_items_added += 1
@@ -46,10 +54,21 @@ class RobobeatWorld(World):
             self.multiworld.itempool.append(filler_item)
 
     def create_regions(self) -> None:
-        pass # TODO: Create Regions
+        for region_name in all_regions.keys():
+            self.multiworld.regions.append(Region(region_name, self.player, self.multiworld))
+
+        for region_name, region_connections in all_regions.items():
+            region = self.get_region(region_name)
+            region.add_exits(region_connections)
+            region.add_locations({
+                location: self.location_name_to_id[location] for location in location_regions[region_name]
+            })
 
     def set_rules(self) -> None:
-        pass # TODO: Add logic to set rules
+        Rules.RobobeatRules(self).set_all_rules()
 
-    def fill_slot_data():
-        pass # TODO: Add any slot settings here
+    def fill_slot_data(self):
+        return {
+            'random_loadout': self.options.randomized_loadout.value,
+            'death_link': self.options.death_link.value
+        }

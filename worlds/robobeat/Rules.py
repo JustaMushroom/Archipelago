@@ -1,4 +1,5 @@
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, Dict, Callable
+from BaseClasses import CollectionState, LocationProgressType
 
 if TYPE_CHECKING:
     from . import RobobeatWorld
@@ -9,8 +10,8 @@ else:
 class RobobeatRules:
     player: int
     world: RobobeatWorld
-    self.location_rules: Dict[str, Callable[[CollectionState], bool]]
-    self.region_rules: Dict[str, Callable[[CollectionState], bool]]
+    location_rules: Dict[str, Callable[[CollectionState], bool]]
+    region_rules: Dict[str, Callable[[CollectionState], bool]]
 
     def __init__(self, world: RobobeatWorld):
         self.player = world.player
@@ -49,8 +50,9 @@ class RobobeatRules:
         multiworld = self.world.multiworld
 
         for region in multiworld.get_regions(self.player):
-            for entrance in region.entrances:
-                entrance.access_rule = self.region_rules[region.name]
+            if region.name in self.region_rules:
+                for entrance in region.entrances:
+                    entrance.access_rule = self.region_rules[region.name]
 
             for loc in region.locations:
                 if loc.name in self.location_rules:

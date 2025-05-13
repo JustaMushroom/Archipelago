@@ -15,6 +15,13 @@ class RobobeatWorld(World):
     item_name_to_id = {item["name"]: i + 1 for i, item in enumerate(all_items)}
     location_name_to_id = {location: i + 1 for i, location in enumerate(all_locations)}
 
+    def generate_early(self) -> None:
+        if self.options.randomize_starting_loadout.value:
+            pass # TODO: Implement logic to switch the starting loadout
+
+        for item in self.options.randomized_loadout:
+            self.multiworld.push_precollected(self.create_item(item + " Blueprint"))
+
     def get_filler_item_name(self) -> None:
         return self.random.choice(filler_items)
 

@@ -19,23 +19,25 @@ class RobobeatRules:
         self.location_rules = {}
         self.region_rules = {
             "The Old Passage": self.armory_access,
+            "The Gallery": self.armory_access,
+            "The Ruins": self.armory_access,
             "The Citadel": self.study_access,
             "The Machine": self.frazzer_access,
         }
         self.location_rules = {
             "Parkour Room Blueprint": self.shop_access,
             "Curveball Blueprint": self.parkour_access,
-            "Stab Blueprint": self.has_contact
+            # "Stab Blueprint": self.has_contact
         }
 
     def armory_access(self, state: CollectionState) -> bool:
-        return state.has("Progressive Key", self.player, count=1)
+        return state.has("Progressive Key", self.player)
 
     def study_access(self, state: CollectionState) -> bool:
-        return state.has("Progressive Key", self.player, count=2)
+        return state.has("Progressive Key", self.player, 2)
 
     def frazzer_access(self, state: CollectionState) -> bool:
-        return state.has("Progressive Key", self.player, count=3)
+        return state.has("Progressive Key", self.player, 3)
 
     def shop_access(self, state: CollectionState) -> bool:
         return state.has("Shop Room Blueprint", self.player)
@@ -58,5 +60,6 @@ class RobobeatRules:
                 if loc.name in self.location_rules:
                     loc.access_rule = self.location_rules[loc.name]
 
-        multiworld.get_location("Defeat Frazzer", self.player).place_locked_item(self.world.create_event("Victory"))
-        multiworld.completion_condition[self.player] = lambda state: state.has("Victory", self.player)
+
+        # from Utils import visualize_regions
+        # visualize_regions(multiworld.get_region("The HUB", self.player), "my_world.puml")

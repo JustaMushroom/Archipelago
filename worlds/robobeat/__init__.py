@@ -2,7 +2,7 @@ from worlds.AutoWorld import World
 from BaseClasses import ItemClassification, Item, Location, Region
 from .Options import RobobeatOptions
 from .Items import main_items, blueprint_items, RobobeatItem, filler_items
-from .Locations import all_locations, location_regions
+from .Locations import all_locations, location_regions, RobobeatLocation
 from .Regions import all_regions
 from . import Rules
 
@@ -21,10 +21,7 @@ class RobobeatWorld(World):
     def generate_early(self) -> None:
         if self.options.randomize_starting_loadout.value:
             pass # TODO: Implement logic to switch the starting loadout
-
-        for item in self.options.randomized_loadout:
-            self.multiworld.push_precollected(self.create_item(item + " Blueprint"))
-
+ 
     def get_filler_item_name(self) -> None:
         return self.random.choice(filler_items)
 
@@ -53,6 +50,8 @@ class RobobeatWorld(World):
             filler_item = self.create_item(self.get_filler_item_name())
             self.multiworld.itempool.append(filler_item)
 
+        print("filler count: " + str(filler_count))
+
     def create_regions(self) -> None:
         for region_name in all_regions.keys():
             self.multiworld.regions.append(Region(region_name, self.player, self.multiworld))
@@ -62,7 +61,12 @@ class RobobeatWorld(World):
             region.add_exits(region_connections)
             region.add_locations({
                 location: self.location_name_to_id[location] for location in location_regions[region_name]
-            })
+            }, RobobeatLocation)
+        machine = self.multiworld.get_region("The Machine", self.player)
+        win_loc = RobobeatLocation(self.player, "Defeat Frazzer", None, machine)
+        win_loc.place_locked_item(self.create_event("Victory"))
+        machine.locations.append(win_loc)
+        self.multiworld.completion_condition[self.player] = lambda state: state.has("Victory", self.player)
 
     def set_rules(self) -> None:
         Rules.RobobeatRules(self).set_all_rules()

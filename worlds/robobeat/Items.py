@@ -17,21 +17,23 @@ main_items = [
     {'name': "Progressive Key",
      'type': ItemClassification.progression,
      'count': 3},
-    {'name': "Blips Card",
-    'type':  ItemClassification.filler},
-    {'name': "Credits Card",
-    'type':  ItemClassification.filler},
-    {'name': "Health Card",
-    'type':  ItemClassification.filler}
+    # {'name': "Blips Card",
+    # 'type':  ItemClassification.filler},
+    # {'name': "Credits Card",
+    # 'type':  ItemClassification.filler},
+    # {'name': "Health Card",
+    # 'type':  ItemClassification.filler}
+    {'name': "Random Reward Card",
+     'type': ItemClassification.filler},
 ]
 
 blueprint_items = [
     {'name': "Shop Room Blueprint",
-     'type': ItemClassification.progression,
+     'type': ItemClassification.progression_skip_balancing,
      'blueprint_item': "Shop Room",
      'blueprint_type': "Room"},
     {'name': "Parkour Room Blueprint",
-     'type': ItemClassification.progression},
+     'type': ItemClassification.progression_skip_balancing},
     {'name': "Directional Bomb Blueprint",
     'type': ItemClassification.useful},
     {'name': "Hammer Blueprint",
@@ -51,6 +53,8 @@ blueprint_items = [
     {'name': "Tempo Blueprint",
     'type':  ItemClassification.useful},
     {'name': "Cosmic Blueprint",
+    'type':  ItemClassification.useful},
+    {'name': "Heartstopper Blueprint",
     'type':  ItemClassification.useful},
     {'name': "Replica Blueprint",
     'type':  ItemClassification.useful},
@@ -104,22 +108,21 @@ blueprint_items = [
     'type':  ItemClassification.useful},
     {'name': "Da Capo Blueprint",
     'type':  ItemClassification.useful},
-    {'name': "Daredevil Blueprint",
-    'type':  ItemClassification.useful},
     {'name': "Curveball Blueprint",
     'type':  ItemClassification.useful},
-    {'name': "Revolver Blueprint",
-     'type': ItemClassification.useful},
-    {'name': "Flux Blueprint",
-     'type': ItemClassification.useful},
-    {'name': "Contact Blueprint",
-     'type': ItemClassification.progression},
-    {'name': "Ping Pong Blueprint",
-     'type': ItemClassification.useful},
-    {'name': "Teleport Blueprint",
-     'type': ItemClassification.useful},
-    {'name': "Lightning Strike Blueprint",
-     'type': ItemClassification.useful}
+    # {'name': "Revolver Blueprint",
+    #  'type': ItemClassification.useful},
+    # {'name': "Flux Blueprint",
+    #  'type': ItemClassification.useful},
+    # {'name': "Contact Blueprint",
+    #  'type': ItemClassification.progression_skip_balancing},
+    # {'name': "Ping Pong Blueprint",
+    #  'type': ItemClassification.useful},
+    # {'name': "Teleport Blueprint",
+    #  'type': ItemClassification.useful},
+    # {'name': "Lightning Strike Blueprint",
+    #  'type': ItemClassification.useful}
 ]
 
-filler_items = ["Blips Card", "Credits Card", "Health Card"]
+# filler_items = ["Blips Card", "Credits Card", "Health Card"]
+filler_items = ["Random Reward Card"]

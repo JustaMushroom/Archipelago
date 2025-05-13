@@ -9,6 +9,7 @@ class RobobeatLocation(Location):
 all_locations = [
     "Directional Bomb Blueprint",
     "Hammer Blueprint",
+    "Communications Key",
     "Bouncer Blueprint",
     "Armory Key",
     "Comeback Blueprint",
@@ -53,20 +54,19 @@ all_locations = [
     "Defeat Ray Punk",
     "Defeat The Showman",
     "Defeat The Mask",
-    "Defeat Frazzer",
     "Complete Communications",
     "Complete The Armory",
-    "Complete The Study",
+    "Complete The Study"
 ]
 
 
 
 location_regions: Dict[str, List[str]] = {
-    "The HUB": ["Directional Bomb Blueprint", "Hammer Blueprint"],
-    "Communications": ["Bouncer Blueprint", "Armory Key", "Complete Communications"],
-    "The Old Passage": ["Comeback Blueprint", "Hook Shot Blueprint", "Flare Gun Blueprint", "Deploy Turret Blueprint", "Tempo Blueprint", "Cosmic Blueprint", "Heartstopper Blueprint", "Shop Room Blueprint", "Parkour Room Blueprint"],
+    "The HUB": ["Directional Bomb Blueprint", "Hammer Blueprint", "Communications Key", "Bouncer Blueprint", "Armory Key", "Complete Communications"],
+    # "Communications": ["Bouncer Blueprint", "Armory Key", "Complete Communications"],
+    "The Old Passage": ["Comeback Blueprint", "Hook Shot Blueprint", "Flare Gun Blueprint", "Deploy Turret Blueprint", "Bullethell Blueprint", "Tempo Blueprint", "Cosmic Blueprint", "Heartstopper Blueprint", "Shop Room Blueprint", "Parkour Room Blueprint"],
     "The Gallery": ["Nuke Blueprint", "Yojimbo Blueprint", "Knife Throw Blueprint", "Virus Room Blueprint", "Clockwork Blueprint", "Infinite Locker Blueprint", "Replica Blueprint", "Defeat Ray Punk"],
     "The Ruins": ["Dunker Blueprint", "The Finish Blueprint", "Faulty Double Blueprint", "Magnet Blueprint", "Stab Blueprint", "Fire Bomb Blueprint", "Nexus Blueprint", "Volt Impact Blueprint", "Target Rush Room Blueprint", "Study Key", "Curveball Blueprint", "Defeat The Showman", "Complete The Armory"],
     "The Citadel": ["Boombox Blueprint", "Freeze Blueprint", "Nocap Blueprint", "Rapid Blueprint", "Axe Blueprint", "Crossbow Blueprint", "Frazzer's Room Key", "Defeat The Mask", "Complete The Study"],
-    "The Machine": ["Echo Blueprint", "Card Shark Blueprint", "Shield Blueprint", "Da Capo Blueprint", "Defeat Frazzer"]
+    "The Machine": ["Echo Blueprint", "Card Shark Blueprint", "Shield Blueprint", "Da Capo Blueprint"]
 }

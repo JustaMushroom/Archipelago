@@ -55,3 +55,6 @@ class RobobeatRules:
             for loc in region.locations:
                 if loc.name in self.location_rules:
                     loc.access_rule = self.location_rules[loc.name]
+
+        multiworld.get_location("Defeat Frazzer", self.player).place_locked_item(self.world.create_event("Victory"))
+        multiworld.completion_condition[self.player] = lambda state: state.has("Victory", self.player)

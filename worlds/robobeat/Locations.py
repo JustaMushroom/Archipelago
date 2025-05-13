@@ -1,4 +1,5 @@
 from BaseClasses import Location
+from typing import Dict, List
 
 
 class RobobeatLocation(Location):
@@ -60,12 +61,12 @@ all_locations = [
 
 
 
-location_regions: Dict[str, List[str]] = [
+location_regions: Dict[str, List[str]] = {
     "The HUB": ["Directional Bomb Blueprint", "Hammer Blueprint"],
     "Communications": ["Bouncer Blueprint", "Armory Key", "Complete Communications"],
     "The Old Passage": ["Comeback Blueprint", "Hook Shot Blueprint", "Flare Gun Blueprint", "Deploy Turret Blueprint", "Tempo Blueprint", "Cosmic Blueprint", "Heartstopper Blueprint", "Shop Room Blueprint", "Parkour Room Blueprint"],
     "The Gallery": ["Nuke Blueprint", "Yojimbo Blueprint", "Knife Throw Blueprint", "Virus Room Blueprint", "Clockwork Blueprint", "Infinite Locker Blueprint", "Replica Blueprint", "Defeat Ray Punk"],
-    "The Ruins": ["Dunker Blueprint", "The Finish Blueprint", "Faulty Double Blueprint", "Magnet Blueprint", "Stab Blueprint", "Fire Bomb Blueprint", "Nexus Blueprint", "Volt Impact Blueprint", "Target Rush Blueprint", "Study Key", "Curveball Blueprint", "Defeat The Showman", "Complete The Armory"],
+    "The Ruins": ["Dunker Blueprint", "The Finish Blueprint", "Faulty Double Blueprint", "Magnet Blueprint", "Stab Blueprint", "Fire Bomb Blueprint", "Nexus Blueprint", "Volt Impact Blueprint", "Target Rush Room Blueprint", "Study Key", "Curveball Blueprint", "Defeat The Showman", "Complete The Armory"],
     "The Citadel": ["Boombox Blueprint", "Freeze Blueprint", "Nocap Blueprint", "Rapid Blueprint", "Axe Blueprint", "Crossbow Blueprint", "Frazzer's Room Key", "Defeat The Mask", "Complete The Study"],
-    "The Machine": ["Echo Blueprint", "Card Shark Blueprint", "Shield Blueprint", "Da Capo Blueprint"]
-]
+    "The Machine": ["Echo Blueprint", "Card Shark Blueprint", "Shield Blueprint", "Da Capo Blueprint", "Defeat Frazzer"]
+}

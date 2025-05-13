@@ -37,3 +37,12 @@ class RobobeatWorld(World):
         for i in range(filler_count):
             filler_item = self.create_item(self.get_filler_item_name())
             self.multiworld.itempool.append(filler_item)
+
+    def create_regions(self) -> None:
+        pass # TODO: Create Regions
+
+    def set_rules(self) -> None:
+        pass # TODO: Add logic to set rules
+
+    def fill_slot_data():
+        pass # TODO: Add any slot settings here

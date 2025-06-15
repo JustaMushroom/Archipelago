@@ -3,7 +3,7 @@ from dataclasses import dataclass
 
 class RandomizeStartingLoadout(Toggle):
     """Randomizes the 4 starting weapons (Revolver, Flux, Contact, Ping Pong) + the 2 starting utilities (Teleport, Lightning Strike)
-    Currently not implemented"""
+    """
     display_name = "Randomize Starting Loadout"
 
 class RandomizedLoadout(OptionList):

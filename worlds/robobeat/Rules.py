@@ -46,7 +46,6 @@ class RobobeatRules:
         return state.has("Parkour Room Blueprint", self.player)
 
     def has_contact(self, state: CollectionState) -> bool:
-        # return state.has("Contact Blueprint", self.player)
         return True if "Contact" in self.world.options.randomized_loadout.value else state.has("Contact Blueprint", self.player)
 
     def set_all_rules(self) -> None:

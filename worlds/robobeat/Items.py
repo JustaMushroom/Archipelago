@@ -86,7 +86,7 @@ blueprint_items = [
      'blueprint_type': "Utility"},
     {'name': "Nuke Blueprint",
     'type':  ItemClassification.useful,
-     'blueprint_item': "Nuke"
+     'blueprint_item': "Nuke",
      'blueprint_type': "Utility"},
     {'name': "Yojimbo Blueprint",
     'type':  ItemClassification.useful,
@@ -197,7 +197,7 @@ blueprint_items = [
      'blueprint_item': "Flux",
      'blueprint_type': "Weapon"},
     {'name': "Contact Blueprint",
-     'type': ItemClassification.progression_skip_balancing,
+     'type': ItemClassification.progression,
      'blueprint_item': "Contact",
      'blueprint_type': "Weapon"},
     {'name': "Ping Pong Blueprint",
@@ -209,7 +209,7 @@ blueprint_items = [
      'blueprint_item': "Teleport",
      'blueprint_type': "Utility"},
     {'name': "Lightning Strike Blueprint",
-     'type': ItemClassification.useful
+     'type': ItemClassification.useful,
      'blueprint_item': "Lightning Strike",
      'blueprint_type': "Utility"},
 ]

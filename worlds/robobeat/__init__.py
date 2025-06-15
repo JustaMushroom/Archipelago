@@ -20,7 +20,19 @@ class RobobeatWorld(World):
 
     def generate_early(self) -> None:
         if self.options.randomize_starting_loadout.value:
-            pass # TODO: Implement logic to switch the starting loadout
+            all_weapons = [item['blueprint_item'] for item in blueprint_items if item['blueprint_type'] == "Weapon"]
+            all_utilities = [item['blueprint_item'] for item in blueprint_items if item['blueprint_type'] == "Utility"]
+            selected_items = []
+            for _ in range(4):
+                item = self.random.choice(all_weapons)
+                selected_items.append(item)
+
+            for _ in range(2):
+                item = self.random.choice(all_utilities)
+                selected_items.append(item)
+
+            all_items = [item for item in all_items if item['blueprint_item'] not in selected_items]
+            self.options.randomized_loadout = selected_items
  
     def get_filler_item_name(self) -> None:
         return self.random.choice(filler_items)

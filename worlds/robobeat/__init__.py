@@ -31,11 +31,7 @@ class RobobeatWorld(World):
                 item = self.random.choice(all_utilities)
                 selected_items.append(item)
 
-            # self.all_items = [item for item in self.all_items if item['blueprint_item'] not in selected_items]
-            self.options.randomized_loadout = selected_items
-        else:
-            selected_items = self.options.randomized_loadout.value
-        self.all_items = main_items + [item for item in blueprint_items if item['blueprint_item'] not in selected_items]
+            self.options.randomized_loadout.value = selected_items
  
     def get_filler_item_name(self) -> None:
         return self.random.choice(filler_items)
@@ -51,6 +47,9 @@ class RobobeatWorld(World):
     def create_items(self) -> None:
         num_items_added = 0
         for item in self.all_items:
+            if item['name'].endswith("Blueprint"):
+                if item['blueprint_item'] in self.options.randomized_loadout.value:
+                    continue
             num = 1
             if 'count' in item:
                 num = item['count']

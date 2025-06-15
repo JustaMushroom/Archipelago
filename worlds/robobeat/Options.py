@@ -9,7 +9,7 @@ class RandomizeStartingLoadout(Toggle):
 class RandomizedLoadout(OptionList):
     display_name = "Starting Loadout"
     visibility = Visibility.spoiler
-    default = set(["Revolver", "Flux", "Contact", "Ping Pong", "Teleport", "Lightning Strike"])
+    default = ["Revolver", "Flux", "Contact", "Ping Pong", "Teleport", "Lightning Strike"]
 
 class Blueprintsanity(Toggle):
     """Add blueprint unlocks to the pool, doubles the number of blueprint checks

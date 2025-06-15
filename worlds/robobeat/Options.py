@@ -15,6 +15,10 @@ class Blueprintsanity(Toggle):
     """Add blueprint unlocks to the pool, doubles the number of blueprint checks
     Currently not implemented"""
 
+class RandomizeCasettes(Toggle):
+    """Add Casettes to the location pool
+    Currently not implemented"""
+
 @dataclass
 class RobobeatOptions(DeathLinkMixin, PerGameCommonOptions):
     randomize_starting_loadout: RandomizeStartingLoadout

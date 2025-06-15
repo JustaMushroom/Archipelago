@@ -27,7 +27,7 @@ class RobobeatRules:
         self.location_rules = {
             "Parkour Room Blueprint": self.shop_access,
             "Curveball Blueprint": self.parkour_access,
-            # "Stab Blueprint": self.has_contact
+            "Stab Blueprint": self.has_contact
         }
 
     def armory_access(self, state: CollectionState) -> bool:
@@ -46,7 +46,8 @@ class RobobeatRules:
         return state.has("Parkour Room Blueprint", self.player)
 
     def has_contact(self, state: CollectionState) -> bool:
-        return state.has("Contact Blueprint", self.player)
+        # return state.has("Contact Blueprint", self.player)
+        return True if "Contact" in self.world.options.randomized_loadout.value else state.has("Contact Blueprint", self.player)
 
     def set_all_rules(self) -> None:
         multiworld = self.world.multiworld

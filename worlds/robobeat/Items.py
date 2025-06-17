@@ -220,3 +220,5 @@ blueprint_items = [
 
 # filler_items = ["Blips Card", "Credits Card", "Health Card"]
 filler_items = ["Random Reward Card"]
+
+trap_items = ["Virus Trap", "Professional Trap"]

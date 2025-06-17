@@ -1,7 +1,7 @@
 from worlds.AutoWorld import World
 from BaseClasses import ItemClassification, Item, Location, Region
 from .Options import RobobeatOptions
-from .Items import main_items, blueprint_items, RobobeatItem, filler_items
+from .Items import main_items, blueprint_items, RobobeatItem, filler_items, trap_items
 from .Locations import all_locations, location_regions, RobobeatLocation
 from .Regions import all_regions
 from . import Rules
@@ -60,11 +60,17 @@ class RobobeatWorld(World):
                 self.multiworld.itempool.append(i)
                 num_items_added += 1
 
-        filler_count = len(all_locations) - num_items_added
+        free_slots = len(all_locations) - num_items_added
+        filler_count = int(free_slots * 0.85)
+        trap_count = int(round(free_slots * 0.15))
 
         for i in range(filler_count):
             filler_item = self.create_item(self.get_filler_item_name())
             self.multiworld.itempool.append(filler_item)
+
+        for i in range(trap_count):
+            trap_item = self.create_item(self.random.choice(trap_items))
+            self.multiworld.itempool.append(trap_item)
 
 
     def create_regions(self) -> None:

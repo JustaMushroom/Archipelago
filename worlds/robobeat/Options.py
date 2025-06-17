@@ -2,7 +2,7 @@ from Options import Toggle, Choice, DeathLinkMixin, StartInventoryPool, PerGameC
 from dataclasses import dataclass
 
 class RandomizeStartingLoadout(Toggle):
-    """Randomizes the 4 starting weapons (Revolver, Flux, Contact, Ping Pong) + the 2 starting utilities (Teleport, Lightning Strike)
+    """Randomizes the 4 starting weapons (Revolver, Flux, Contact, Ping Pong) and the 2 starting utilities (Teleport, Lightning Strike)
     """
     display_name = "Randomize Starting Loadout"
 

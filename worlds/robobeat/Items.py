@@ -25,6 +25,10 @@ main_items = [
     # 'type':  ItemClassification.filler}
     {'name': "Random Reward Card",
      'type': ItemClassification.filler},
+    {'name': "Virus Trap",
+     'type': ItemClassification.trap},
+    {'name': "Professional Trap",
+     'type': ItemClassification.trap},
 ]
 
 blueprint_items = [

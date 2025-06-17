@@ -25,10 +25,12 @@ class RobobeatWorld(World):
             all_utilities = [item['blueprint_item'] for item in blueprint_items if item['blueprint_type'] == "Utility"]
             for _ in range(4):
                 item = self.random.choice(all_weapons)
+                all_weapons.remove(item)
                 selected_items.append(item)
 
             for _ in range(2):
                 item = self.random.choice(all_utilities)
+                all_utilities.remove(item)
                 selected_items.append(item)
 
             self.options.randomized_loadout.value = selected_items
